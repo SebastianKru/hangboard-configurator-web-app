@@ -11,13 +11,18 @@ public class RadioButtonBehaviour : MonoBehaviour
 
     public void Start()
     {
+
         //Fetch the Toggle GameObject
         toggle = GetComponent<Toggle>();
         //Add listener for when the state of the Toggle changes, to take action
         toggle.onValueChanged.AddListener(delegate {
             ToggleValueChanged(toggle);
         });
-        Debug.Log("value changed");
+
+        if (toggle.isOn)
+        {
+            GameObject.Instantiate(hangboardBase, anchor);
+        }
     }
 
     //Output the new state of the Toggle into Text

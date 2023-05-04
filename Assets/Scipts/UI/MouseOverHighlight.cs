@@ -9,14 +9,14 @@ public class MouseOverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerE
     IPointerDownHandler, IPointerUpHandler
 {
 
-    Image [] images;
+    Image [] childimages;
     TMP_Text[] texts;
     float dimmedAlpha = 0.7f;
     float highlightAlpha = 0.9f;
 
     public void Start()
     {
-        images = this.GetComponentsInChildren<Image>();
+        childimages = this.GetComponentsInChildren<Image>();
         texts = this.GetComponentsInChildren<TMP_Text>();
 
     }
@@ -43,7 +43,7 @@ public class MouseOverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     private void ChangeHoverColor(float newAlpha)
     {
-        foreach (Image img in images)
+        foreach (Image img in childimages)
         {
             Color tmp = img.color;
             tmp.a = newAlpha;

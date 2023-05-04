@@ -11,12 +11,26 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraOffset = new Vector3(0.09f,0,0.7f);
     [SerializeField]
     private float rotSpeed = 2.0f;
+
     private float rotY;
     private float rotX;
 
     private float zoomMin = 0.2f;
     private float zoomMax = 0.37f;
-    private float zoomSensitivity = 0.06f; 
+    private float zoomSensitivity = 0.06f;
+
+    private float defaultCameraZoom;
+    private Quaternion defaultCameraRotation;
+    private Vector3 defaultCameraPosition;
+
+    float animationTime = 0.5f;
+
+    private void Start()
+    {
+        defaultCameraZoom = Camera.main.orthographicSize;
+        defaultCameraRotation = Camera.main.transform.rotation;
+        defaultCameraPosition = Camera.main.transform.position;
+    }
 
     void Update()
     {
@@ -35,18 +49,15 @@ public class CameraController : MonoBehaviour
         // get the inputs from both mouse axis
         float mouseX = Input.GetAxis("Mouse X") * rotSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * rotSpeed;
-
-        //flip the mouse axis to match in game axis 
+        //flip the mouse axis to match in game axis
         rotY += mouseX;
         rotX += mouseY;
-
         // set bounds for min and max rotation on both axis 
         rotX = Mathf.Clamp(rotX, -40, 40);
         rotY = Mathf.Clamp(rotY, -40, 40);
 
         // set rotation of the camera according to mouse position 
         transform.localEulerAngles = new Vector3(rotX, rotY);
-
         // include an ofset to z and y ais, so that the hangboard fits the available area well
         transform.position =
             hangboardParent.position
@@ -64,9 +75,53 @@ public class CameraController : MonoBehaviour
         // set bounds for min and max zoom
         zoom = Mathf.Clamp(zoom, zoomMin, zoomMax);
 
-        //apply the zoom value to the camera option "size"
+        // apply the zoom value to the camera option "size"
         Camera.main.orthographicSize = zoom;
     }
+
+    //gets called if the Button "" is pressed
+    public void ResetView()
+    {
+        //start the animation to reset rotation and zoom
+        StartCoroutine(ResetViewAnimation());
+
+        // the variables rotY and rotX need to be reset
+        // to start rotating from the center again 
+        rotY = 0;
+        rotX = 0;
+    }
+
+    // Coroutine 
+    IEnumerator ResetViewAnimation()
+    {
+        float timePassed = 0.0f;
+
+        // run through a period of animation time and smoothly change
+        // rotation and zoom 
+        while(timePassed < animationTime)
+        {
+            // use Quaternion.Slerp to change the rotation to default 
+            transform.rotation =
+                Quaternion.Slerp(
+                    transform.rotation,
+                    defaultCameraRotation,
+                    timePassed / animationTime);
+
+            // use Vector3.Slerp to reset the camer position to default 
+            transform.position =
+                Vector3.Slerp(transform.position,
+                defaultCameraPosition,
+                timePassed / animationTime);
+
+            // use Mathf.Smoothstep to reset the zoom to default 
+            Camera.main.orthographicSize =
+                Mathf.SmoothStep(
+                    Camera.main.orthographicSize,
+                    defaultCameraZoom,
+                    timePassed / animationTime);
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+    }
 }
-
-
