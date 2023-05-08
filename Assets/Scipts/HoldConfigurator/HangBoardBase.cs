@@ -10,7 +10,7 @@ public class HangBoardBase : MonoBehaviour
     public float yMin;
     public float yMax;
 
-    private GameObject holdAnchor; 
+    private GameObject holdAnchor;
 
     private void Awake()
     {

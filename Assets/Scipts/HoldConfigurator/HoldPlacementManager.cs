@@ -22,12 +22,8 @@ public class HoldPlacementManager : MonoBehaviour
 
     private HangBoardBase hangBoardBase;
 
+    public bool holdCanBePlaced = true;
 
-
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -39,9 +35,13 @@ public class HoldPlacementManager : MonoBehaviour
                 -(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
                 );
 
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && holdCanBePlaced)
             {
-                holdCur = null; 
+                holdCur.transform.GetChild(0).gameObject.SetActive(false);
+
+                holdCur.GetComponent<HoldBehaviour>().isPlaced = true; 
+                holdCur = null;
+
             }
         }
     }
