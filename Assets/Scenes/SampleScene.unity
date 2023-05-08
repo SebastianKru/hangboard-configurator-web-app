@@ -373,7 +373,7 @@ Transform:
   - {fileID: 223974230}
   - {fileID: 782628379}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288841631
 GameObject:
@@ -2405,7 +2405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: -0.7}
+  m_LocalPosition: {x: 0.2, y: 0, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2426,6 +2426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hangboardParent: {fileID: 1375717149}
   cameraOffset: {x: 0.1, y: 0.0675, z: -0.7}
+  defaultCameraPosition: {x: 0.2, y: 0.0675, z: -0.7}
   rotSpeed: 0.7
 --- !u!1 &973878437
 GameObject:
@@ -2562,6 +2563,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973878437}
   m_CullTransparentMesh: 1
+--- !u!1 &1096096494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096096495}
+  m_Layer: 0
+  m_Name: HoldsAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096096495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096096494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.16499999, z: -0.0225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100342474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375717148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.0675, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0.0675, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2942,6 +2974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holds:
   - {fileID: 6838731970071443680, guid: 075a7899b02164048b8821c9945c34ba, type: 3}
+  holdsParent: {fileID: 1096096494}
   layerMask:
     serializedVersion: 2
     m_Bits: 8

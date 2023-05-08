@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoldManager : MonoBehaviour
+public class HoldPlacementManager : MonoBehaviour
 {
 
 
     public GameObject[] holds;
-    private GameObject curHold; 
+    public GameObject holdsParent;
+    private GameObject holdCur; 
 
     private Vector3 pos;
     private RaycastHit raycastHit;
@@ -22,6 +23,7 @@ public class HoldManager : MonoBehaviour
     private HangBoardBase hangBoardBase;
 
 
+
     private void Start()
     {
 
@@ -29,17 +31,17 @@ public class HoldManager : MonoBehaviour
 
     private void Update()
     {
-        if (curHold != null)
+        if (holdCur != null)
         {
-            curHold.transform.position = new Vector3(
+            holdCur.transform.position = new Vector3(
                 RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
                 RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
-                -(thicknessBase + curHold.GetComponent<BoxCollider>().bounds.size.z) / 2
+                -(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
                 );
 
             if(Input.GetMouseButtonDown(0))
             {
-                curHold = null; 
+                holdCur = null; 
             }
         }
     }
@@ -56,7 +58,7 @@ public class HoldManager : MonoBehaviour
 
     public void DragHold(int index)
     {
-        curHold = Instantiate(holds[index], pos, transform.rotation);
+        holdCur = Instantiate(holds[index], pos, transform.rotation, holdsParent.transform);
         hangBoardBase = GetComponentInChildren<HangBoardBase>();
     }
 

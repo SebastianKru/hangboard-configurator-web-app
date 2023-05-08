@@ -8,5 +8,25 @@ public class HangBoardBase : MonoBehaviour
     public float xMax;
 
     public float yMin;
-    public float yMax; 
+    public float yMax;
+
+    private GameObject holdAnchor; 
+
+    private void Awake()
+    {
+        holdAnchor =  GameObject.FindGameObjectWithTag("HoldsAnchor");
+
+        foreach(Transform hold in holdAnchor.transform)
+        {
+            if(hold.position.x < xMin
+                || hold.position.x > xMax
+                || hold.position.y < yMin
+                || hold.position.y > yMax)
+            {
+                Destroy(hold.gameObject);
+            }
+        }
+    }
 }
+
+
