@@ -7,8 +7,13 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private Transform hangboardParent;
+
+    // offset between Camera and Hangboard, as the hangboard is shifted to the right
+    // in order to have anough space for the UI on the left 
     [SerializeField]
-    private Vector3 cameraOffset = new Vector3(0.09f,0,0.7f);
+    private Vector3 cameraOffset = new Vector3(0.1f,0.0675f,0.7f);
+    [SerializeField]
+    private Vector3 defaultCameraPosition = new Vector3(0.2f, 0.0675f, 0.7f);
     [SerializeField]
     private float rotSpeed = 2.0f;
 
@@ -21,7 +26,6 @@ public class CameraController : MonoBehaviour
 
     private float defaultCameraZoom;
     private Quaternion defaultCameraRotation;
-    private Vector3 defaultCameraPosition;
 
     float animationTime = 0.5f;
 
@@ -29,7 +33,7 @@ public class CameraController : MonoBehaviour
     {
         defaultCameraZoom = Camera.main.orthographicSize;
         defaultCameraRotation = Camera.main.transform.rotation;
-        defaultCameraPosition = Camera.main.transform.position;
+        Camera.main.transform.position = defaultCameraPosition;
     }
 
     void Update()
@@ -61,7 +65,7 @@ public class CameraController : MonoBehaviour
         // include an ofset to z and y ais, so that the hangboard fits the available area well
         transform.position =
             hangboardParent.position
-            - transform.forward * cameraOffset.z
+            + transform.forward * cameraOffset.z
             - transform.right * cameraOffset.x;
     }
 
@@ -100,20 +104,18 @@ public class CameraController : MonoBehaviour
         // rotation and zoom 
         while(timePassed < animationTime)
         {
-            // use Quaternion.Slerp to change the rotation to default 
+            // use Quaternion.Slerp to change the rotation from current to default 
             transform.rotation =
                 Quaternion.Slerp(
                     transform.rotation,
                     defaultCameraRotation,
                     timePassed / animationTime);
-
             // use Vector3.Slerp to reset the camer position to default 
             transform.position =
                 Vector3.Slerp(transform.position,
                 defaultCameraPosition,
                 timePassed / animationTime);
 
-            // use Mathf.Smoothstep to reset the zoom to default 
             Camera.main.orthographicSize =
                 Mathf.SmoothStep(
                     Camera.main.orthographicSize,

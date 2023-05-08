@@ -8,7 +8,6 @@ public class RadioButtonBehaviour : MonoBehaviour
     Toggle toggle;
     public GameObject hangboardBase;
     public Transform anchor; 
-
     public void Start()
     {
 
@@ -30,13 +29,18 @@ public class RadioButtonBehaviour : MonoBehaviour
     {
        if(toggle.isOn)
        {
-            GameObject.Instantiate(hangboardBase, anchor); 
+            GameObject.Instantiate(hangboardBase, anchor);
+            if(anchor.childCount>1)
+            {
+                Destroy(anchor.GetChild(0).gameObject);
+            }
        }
        else
        {
+
             if(hangboardBase.activeSelf)
             {
-                Destroy(anchor.GetChild(0).gameObject); 
+                Destroy(anchor.GetChild(0).gameObject);
             }
        }
     }
