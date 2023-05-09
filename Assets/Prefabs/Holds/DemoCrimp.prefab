@@ -97,7 +97,8 @@ GameObject:
   - component: {fileID: 6838731970071443681}
   - component: {fileID: 3940314380122119761}
   - component: {fileID: 2337422019242939567}
-  m_Layer: 0
+  - component: {fileID: 3446534429303826602}
+  m_Layer: 6
   m_Name: DemoCrimp
   m_TagString: Hold
   m_Icon: {fileID: 0}
@@ -200,6 +201,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bb1ecfb7049ad4f1bbd30d93a6cc70d6, type: 2}
   - {fileID: 2100000, guid: 44fd09692e2534129b5e3899b464cca6, type: 2}
   isPlaced: 0
+  isSelected: 0
 --- !u!54 &2337422019242939567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,3 +218,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3446534429303826602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838731970071443680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

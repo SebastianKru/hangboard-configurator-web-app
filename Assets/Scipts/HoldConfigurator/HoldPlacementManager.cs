@@ -8,7 +8,8 @@ public class HoldPlacementManager : MonoBehaviour
 
     public GameObject[] holds;
     public GameObject holdsParent;
-    private GameObject holdCur; 
+    public GameObject holdCur;
+    public bool activelyPlacingHold = false; 
 
     private Vector3 pos;
     private RaycastHit raycastHit;
@@ -38,9 +39,11 @@ public class HoldPlacementManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0) && holdCanBePlaced)
             {
                 holdCur.transform.GetChild(0).gameObject.SetActive(false);
-
-                holdCur.GetComponent<HoldBehaviour>().isPlaced = true; 
+                holdCur.GetComponent<HoldBehaviour>().isPlaced = true;
+                // deselect hold on placement, as we do not weant the popUp Menu to open on placement 
+                holdsParent.GetComponent<HoldPopUpManager>().Deselect();
                 holdCur = null;
+                activelyPlacingHold = false;
 
             }
         }
@@ -59,6 +62,7 @@ public class HoldPlacementManager : MonoBehaviour
     public void DragHold(int index)
     {
         holdCur = Instantiate(holds[index], pos, transform.rotation, holdsParent.transform);
+        activelyPlacingHold = true; 
         hangBoardBase = GetComponentInChildren<HangBoardBase>();
     }
 
