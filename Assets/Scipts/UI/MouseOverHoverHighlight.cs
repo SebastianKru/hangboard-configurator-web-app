@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class MouseOverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
+public class MouseOverHoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     IPointerDownHandler, IPointerUpHandler
 {
 
     Image [] childimages;
     TMP_Text[] texts;
-    float dimmedAlpha = 0.7f;
+    float defaultAlpha = 0.7f;
     float highlightAlpha = 0.9f;
 
     public void Start()
@@ -23,25 +23,25 @@ public class MouseOverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ChangeHoverColor(dimmedAlpha);
+        ChangeAlpha(defaultAlpha);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ChangeHoverColor(1f);
+        ChangeAlpha(1f);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        ChangeHoverColor(highlightAlpha);
+        ChangeAlpha(highlightAlpha);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        ChangeHoverColor(1f);
+        ChangeAlpha(1f);
     }
 
-    private void ChangeHoverColor(float newAlpha)
+    private void ChangeAlpha(float newAlpha)
     {
         foreach (Image img in childimages)
         {

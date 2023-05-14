@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoldBehaviour : MonoBehaviour
+public class Hold : MonoBehaviour
 {
 
     public Material[] materials;
+
+    public string nameofHold = "Crimp";
+    public string sizeofHold = "10mm";
+    public string descriptionofHold = "a wooden crimp with 2mm edge";
+
     public bool isPlaced = false;
     public bool isSelected = false; 
     private HoldPlacementManager holdPlacementManager;
-    private Outline hoverOutline;
+    private Outline outline;
 
     private void Awake()
     {
@@ -19,53 +24,68 @@ public class HoldBehaviour : MonoBehaviour
         GetComponent<MeshRenderer>().material = materials[0];
         transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[1];
 
-        hoverOutline = GetComponent<Outline>();
+        outline = GetComponent<Outline>();
     }
 
     private void Update()
     {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        HoverHighlight(ray); 
+    }
+
+    private void HoverHighlight(Ray ray)
+    {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 5)
             && hit.collider.gameObject == this.gameObject
             && !isSelected)
         {
-            hoverOutline.enabled = true;
-            hoverOutline.OutlineColor = Color.grey;
+            outline.enabled = true;
+            outline.OutlineColor = Color.grey;
         }
         else if (!isSelected)
         {
-            hoverOutline.enabled = false;
+            outline.enabled = false;
         }
-    
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isPlaced && other.gameObject.tag == "Hold")
-        {
-            holdPlacementManager.holdCanBePlaced = false;
-            transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[2];
-        }
+        GiveFeedbackForPlacement(other, false, 2);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!isPlaced && other.gameObject.tag == "Hold")
-        {
-            holdPlacementManager.holdCanBePlaced = false;
-            transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[2];
-        }
+        GiveFeedbackForPlacement(other, false, 2);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        GiveFeedbackForPlacement(other, true, 1);
+    }
+
+    private void GiveFeedbackForPlacement(Collider other, bool placeAvailable, int material)
+    {
         if (!isPlaced && other.gameObject.tag == "Hold")
         {
-            holdPlacementManager.holdCanBePlaced = true;
-            transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[1];
+            holdPlacementManager.isPlaceAvailable = placeAvailable;
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[material];
         }
+    }
+
+
+    public void Deselected()
+    {
+        outline.enabled = false;
+        isSelected = false;
+    }
+
+    public void Selected()
+    {
+        outline.enabled = true;
+        outline.OutlineColor = Color.white;
+        isSelected = true;
     }
 }

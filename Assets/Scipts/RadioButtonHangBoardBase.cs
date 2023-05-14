@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RadioButtonBehaviour : MonoBehaviour
+public class RadioButtonHangBoardBase : MonoBehaviour
 {
     Toggle toggle;
     public GameObject hangboardBase;

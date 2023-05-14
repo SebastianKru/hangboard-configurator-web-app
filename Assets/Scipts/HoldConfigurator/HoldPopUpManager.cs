@@ -1,25 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HoldPopUpManager : MonoBehaviour
 {
 
     public GameObject selectedHold;
     public LayerMask holdLayerMask;
+    public HoldMenu holdMenu; 
     private HoldPlacementManager holdPlacementManager;
-    private Outline outline; 
+    private Outline outline;
+
+    public PointerOverUIElement pointerOverUIElement;
 
 
-
-    // Start is called before the first frame update
-    void Start()
+void Start()
     {
-        holdPlacementManager = GameObject.FindGameObjectWithTag("HoldsAnchor").
+        holdPlacementManager =
+            GameObject.FindGameObjectWithTag("HoldPlacementManager").
             GetComponent<HoldPlacementManager>();
-    }
 
-    // Update is called once per frame
+        holdMenu = GameObject.FindGameObjectWithTag("HoldMenu").GetComponent<HoldMenu>();
+
+        if (holdMenu.gameObject.activeSelf)
+            holdMenu.gameObject.SetActive(false);
+}
+
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,49 +38,52 @@ public class HoldPopUpManager : MonoBehaviour
             if(Physics.Raycast(ray, out hit, 5, holdLayerMask)
                 //avoid selecting the currently dragged hold while it is still unplaced
                 //only happens if a hold is hovering over another hold where it cannot be placed
-                && hit.collider.gameObject.GetComponent<HoldBehaviour>().isPlaced
+                && hit.collider.gameObject.GetComponent<Hold>().isPlaced
                 //TODO find out why nullrefference
                 // avoid selecting a hold while dragging another hold over it 
-                // && !holdPlacementManager.activelyPlacingHold
+                 && !holdPlacementManager.activelyPlacingHold
                 )
             {
-                Select(hit.collider.gameObject);
+                EnableHoldMenu(hit.collider.gameObject);
             }
-            else if (selectedHold!= null)
+            else if (selectedHold != null && !pointerOverUIElement.IsPointerOverUIElement())
             {
-                Deselect();
+                DisableHoldMenu();
             }
         }
 
     }
 
-    private void Select(GameObject hold)
+
+    private void EnableHoldMenu(GameObject hold)
     {
         // clicking on a selected hold will deselect the hold
         if (hold == selectedHold)
         {
-            Deselect();
+            DisableHoldMenu();
             return;
         }
 
         // clicking on a hold will deselect any other hold
         if(selectedHold != null)
-            Deselect();
+            DisableHoldMenu();
         
-
-        outline = hold.GetComponent<Outline>();
-        outline.enabled = true;
-        outline.OutlineColor = Color.white;
         selectedHold = hold;
-        selectedHold.GetComponent<HoldBehaviour>().isSelected = true; 
+        //show the selectedOutline to highlight which hold is currently selected 
+        selectedHold.GetComponent<Hold>().Selected();
+
+        //enable the GameObject which holds the UI
+        holdMenu.gameObject.SetActive(true);
+        holdMenu.configureHoldMenu(hold.GetComponent<Hold>());
     }
 
-    public void Deselect()
+    public void DisableHoldMenu()
     {
         if (selectedHold != null)
         {
-            selectedHold.GetComponent<Outline>().enabled = false;
-            selectedHold.GetComponent<HoldBehaviour>().isSelected = false;
+            selectedHold.GetComponent<Hold>().Deselected();
+            holdMenu.gameObject.SetActive(false);
+
             selectedHold = null;
         }
     }

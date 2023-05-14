@@ -39,16 +39,16 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //Check if the user is zooming each frame
-        ZoomBehaviourOnScroll();
+        ZoomOnScroll();
 
         // if the mouse Button is pressed, the user can rotate the camera around the Hangboard 
         if (Input.GetMouseButton(0))
         {
-            RotationBehaviourOnDrag();
+            RotationOnDrag();
         }
     }
 
-    private void RotationBehaviourOnDrag()
+    private void RotationOnDrag()
     {
         // get the inputs from both mouse axis
         float mouseX = Input.GetAxis("Mouse X") * rotSpeed;
@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
             - transform.right * cameraOffset.x;
     }
 
-    private void ZoomBehaviourOnScroll()
+    private void ZoomOnScroll()
     {
         // zoom is done by changing the ortographic camera option called "size"
         float zoom = Camera.main.orthographicSize;

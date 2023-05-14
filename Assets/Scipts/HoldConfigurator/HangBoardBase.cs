@@ -14,11 +14,16 @@ public class HangBoardBase : MonoBehaviour
 
     private void Awake()
     {
-        holdAnchor =  GameObject.FindGameObjectWithTag("HoldsAnchor");
+        ControlHoldPlacementsOnSpawn();
+    }
 
-        foreach(Transform hold in holdAnchor.transform)
+    private void ControlHoldPlacementsOnSpawn()
+    {
+        holdAnchor = GameObject.FindGameObjectWithTag("HoldsAnchor");
+
+        foreach (Transform hold in holdAnchor.transform)
         {
-            if(hold.position.x < xMin
+            if (hold.position.x < xMin
                 || hold.position.x > xMax
                 || hold.position.y < yMin
                 || hold.position.y > yMax)

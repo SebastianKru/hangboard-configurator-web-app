@@ -23,29 +23,43 @@ public class HoldPlacementManager : MonoBehaviour
 
     private HangBoardBase hangBoardBase;
 
-    public bool holdCanBePlaced = true;
+    //is this place already occupied by another hold? 
+    public bool isPlaceAvailable = true;
+
+    // is the mouse over the hangboard base, when the user wants to place the hold? 
+    private bool isMouseOverHangboard = false; 
 
 
     private void Update()
     {
         if (holdCur != null)
         {
-            holdCur.transform.position = new Vector3(
-                RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
-                RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
-                -(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
-                );
+            PlaceHold();
+        }
+    }
+    private void PlaceHold()
+    {
+        holdCur.transform.position = new Vector3(
+            RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
+            RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
+            -(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
+            );
 
-            if(Input.GetMouseButtonDown(0) && holdCanBePlaced)
+        if (Input.GetMouseButtonDown(0) && isMouseOverHangboard)
+        {
+            if (isPlaceAvailable)
             {
                 holdCur.transform.GetChild(0).gameObject.SetActive(false);
-                holdCur.GetComponent<HoldBehaviour>().isPlaced = true;
+                holdCur.GetComponent<Hold>().isPlaced = true;
                 // deselect hold on placement, as we do not weant the popUp Menu to open on placement 
-                holdsParent.GetComponent<HoldPopUpManager>().Deselect();
+                holdsParent.GetComponent<HoldPopUpManager>().DisableHoldMenu();
                 holdCur = null;
                 activelyPlacingHold = false;
-
             }
+        }
+        else if (Input.GetMouseButtonDown(0) && !isMouseOverHangboard)
+        {
+            Destroy(holdCur);
         }
     }
 
@@ -56,14 +70,21 @@ public class HoldPlacementManager : MonoBehaviour
         if (Physics.Raycast(ray, out raycastHit, 5f, layerMask))
         {
             pos = raycastHit.point;
+            isMouseOverHangboard = true;
         }
+        else
+            isMouseOverHangboard = false; 
     }
 
     public void DragHold(int index)
     {
-        holdCur = Instantiate(holds[index], pos, transform.rotation, holdsParent.transform);
-        activelyPlacingHold = true; 
-        hangBoardBase = GetComponentInChildren<HangBoardBase>();
+        //control if a hold is currently being placed
+        if(holdCur == null)
+        {
+            holdCur = Instantiate(holds[index], pos, transform.rotation, holdsParent.transform);
+            activelyPlacingHold = true;
+            hangBoardBase = GetComponentInChildren<HangBoardBase>();
+        }
     }
 
 
