@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hold : MonoBehaviour
 {
+    public int selectedMaterial = 3; 
 
     public Material[] materials;
 
@@ -22,6 +23,7 @@ public class Hold : MonoBehaviour
         holdPlacementManager = GameObject.FindGameObjectWithTag("HoldPlacementManager").
             GetComponent<HoldPlacementManager>();
 
+        materials[0] = materials[3]; 
         GetComponent<MeshRenderer>().material = materials[0];
         transform.GetChild(0).GetComponent<MeshRenderer>().material = materials[1];
 
@@ -95,5 +97,13 @@ public class Hold : MonoBehaviour
     {
         Deselected();
         Destroy(this.gameObject);
+    }
+
+    public void ChangeHoldMaterial(int matIndex)
+    {
+        materials[0] = materials[matIndex];
+        selectedMaterial = matIndex;
+
+        GetComponent<MeshRenderer>().material = materials[0];
     }
 }

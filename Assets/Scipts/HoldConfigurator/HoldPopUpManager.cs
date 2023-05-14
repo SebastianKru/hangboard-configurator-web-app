@@ -12,7 +12,6 @@ public class HoldPopUpManager : MonoBehaviour
     private HoldPlacementManager holdPlacementManager;
     private Outline outline;
 
-
     void Start()
         {
         holdPlacementManager =
@@ -72,10 +71,12 @@ public class HoldPopUpManager : MonoBehaviour
 
         //enable the GameObject which holds the UI
         holdMenu.gameObject.SetActive(true);
-        // set the position so that the menu is placed within the bounds of the webPlayer
-        holdMenu.transform.position = SetValidPlacementForMenu(hold);
+        //set the position so that the menu is placed within the bounds of the webPlayer
+        holdMenu.transform.position = SetValidPlacementForMenu(selectedHold);
+        //control which material is currently selected and select the correspding toggle 
+        holdMenu.ShowToggleOfActiveMaterial(selectedHold.GetComponent<Hold>().selectedMaterial);
         //Setup the text to display within the menu
-        holdMenu.configureHoldMenu(hold.GetComponent<Hold>());
+        holdMenu.configureHoldMenu(selectedHold.GetComponent<Hold>());
     }
 
 
@@ -99,6 +100,11 @@ public class HoldPopUpManager : MonoBehaviour
 
         holdMenu.gameObject.SetActive(false);
 
+    }
+
+    public void OnChangeMaterialToggleClicked(int index)
+    {
+        selectedHold.GetComponent<Hold>().ChangeHoldMaterial(index);
     }
 
     private Vector3 SetValidPlacementForMenu(GameObject hold)

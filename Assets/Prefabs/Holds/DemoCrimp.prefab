@@ -200,6 +200,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3e8171d81974a42ac8423f350747f223, type: 2}
   - {fileID: 2100000, guid: bb1ecfb7049ad4f1bbd30d93a6cc70d6, type: 2}
   - {fileID: 2100000, guid: 44fd09692e2534129b5e3899b464cca6, type: 2}
+  - {fileID: 2100000, guid: 3e8171d81974a42ac8423f350747f223, type: 2}
+  - {fileID: 2100000, guid: 1e5f49a2f959d4321aef9b65429d180b, type: 2}
+  - {fileID: 2100000, guid: 0d7703ed8fc24452d9bc0c1937661493, type: 2}
   nameofHold: crimp
   sizeofHold: 10mm
   descriptionofHold: 10mm crimp with 2mm edge 100mm by 35mm

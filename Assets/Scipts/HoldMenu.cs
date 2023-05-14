@@ -2,32 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HoldMenu : MonoBehaviour
 {
-
     public TMP_Text heading;
     public TMP_Text description;
 
-    private Hold selectedHold; 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Toggle oakToggle;
+    public Toggle stoneToggle;
+    public Toggle tulipToggle; 
 
     public void configureHoldMenu(Hold hold)
     {
         heading.text = hold.nameofHold;
         description.text = hold.descriptionofHold;
 
-        selectedHold = hold;
     }
 
+    public void ShowToggleOfActiveMaterial(int matIndex)
+    {
+        Debug.Log(matIndex);
+        switch(matIndex)
+        {
+            case 1:
+                oakToggle.isOn = true;
+                break;
+            case 3:
+                oakToggle.isOn = true;
+                break;
+            case 4:
+                stoneToggle.isOn = true;
+                break;
+            case 5:
+                tulipToggle.isOn = true;
+                break; 
+        }
+    }
 }
