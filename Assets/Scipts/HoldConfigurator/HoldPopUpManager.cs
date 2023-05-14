@@ -42,7 +42,9 @@ public class HoldPopUpManager : MonoBehaviour
             {
                 EnableHoldMenu(hit.collider.gameObject);
             }
-            else if (selectedHold != null && !PointerOverUIElement.IsPointerOverUIElement())
+            else if (selectedHold != null
+                && !PointerOverUIElement.IsPointerOverUIElement()
+                )
             {
                 DisableHoldMenu();
             }
@@ -70,8 +72,13 @@ public class HoldPopUpManager : MonoBehaviour
 
         //enable the GameObject which holds the UI
         holdMenu.gameObject.SetActive(true);
+        // set the position so that the menu is placed within the bounds of the webPlayer
+        holdMenu.transform.position = SetValidPlacementForMenu(hold);
+        //Setup the text to display within the menu
         holdMenu.configureHoldMenu(hold.GetComponent<Hold>());
     }
+
+
 
     public void DisableHoldMenu()
     {
@@ -92,5 +99,26 @@ public class HoldPopUpManager : MonoBehaviour
 
         holdMenu.gameObject.SetActive(false);
 
+    }
+
+    private Vector3 SetValidPlacementForMenu(GameObject hold)
+    {
+        //Transform the world coordinates of a hold to the screen coordinates of a UI element
+        Vector3 menuPos = RectTransformUtility.
+            WorldToScreenPoint(Camera.main, hold.transform.position);
+
+        // per default the holdMenu us placed straight under the hold.
+        // if the hold is to close to the borders of the web application,
+        // the position gets addapted, so that the menu always stays within the application borders
+        if (menuPos.y < 185)
+            menuPos.y += 250;
+
+        if (menuPos.x < 395)
+            menuPos.x = 395;
+
+        else if (menuPos.x > 1190)
+            menuPos.x = 1190;
+
+        return menuPos;
     }
 }
