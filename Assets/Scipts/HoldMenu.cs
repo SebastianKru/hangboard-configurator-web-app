@@ -9,6 +9,8 @@ public class HoldMenu : MonoBehaviour
     public TMP_Text heading;
     public TMP_Text description;
 
+    private Hold selectedHold; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,8 @@ public class HoldMenu : MonoBehaviour
     {
         heading.text = hold.nameofHold;
         description.text = hold.descriptionofHold;
+
+        selectedHold = hold;
     }
+
 }

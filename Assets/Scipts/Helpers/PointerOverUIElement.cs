@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.EventSystems;
 
 public class PointerOverUIElement : MonoBehaviour
 {
 
-    public int uiLayer;
+    public static int uiLayer = 7;
 
     //Returns 'true' if we touched or hovering on Unity UI element.
-    public bool IsPointerOverUIElement()
+    public static bool IsPointerOverUIElement()
     {
         return IsPointerOverUIElement(GetEventSystemRaycastResults());
     }
 
 
     //Returns 'true' if we touched or hovering on Unity UI element.
-    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    private static bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
     {
         for (int index = 0; index < eventSystemRaysastResults.Count; index++)
         {

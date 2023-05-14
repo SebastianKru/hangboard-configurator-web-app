@@ -2,31 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HoldPopUpManager : MonoBehaviour
 {
 
     public GameObject selectedHold;
     public LayerMask holdLayerMask;
-    public HoldMenu holdMenu; 
+    public HoldMenu holdMenu;
     private HoldPlacementManager holdPlacementManager;
     private Outline outline;
 
-    public PointerOverUIElement pointerOverUIElement;
 
-
-void Start()
-    {
+    void Start()
+        {
         holdPlacementManager =
             GameObject.FindGameObjectWithTag("HoldPlacementManager").
             GetComponent<HoldPlacementManager>();
 
-        holdMenu = GameObject.FindGameObjectWithTag("HoldMenu").GetComponent<HoldMenu>();
-
         if (holdMenu.gameObject.activeSelf)
             holdMenu.gameObject.SetActive(false);
-}
+    }
 
     void Update()
     {
@@ -35,18 +30,19 @@ void Start()
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(Physics.Raycast(ray, out hit, 5, holdLayerMask)
+            if (Physics.Raycast(ray, out hit, 5, holdLayerMask)
                 //avoid selecting the currently dragged hold while it is still unplaced
                 //only happens if a hold is hovering over another hold where it cannot be placed
                 && hit.collider.gameObject.GetComponent<Hold>().isPlaced
-                //TODO find out why nullrefference
-                // avoid selecting a hold while dragging another hold over it 
+                 //TODO find out why nullrefference
+                 // avoid selecting a hold while dragging another hold over it 
                  && !holdPlacementManager.activelyPlacingHold
+                 && !PointerOverUIElement.IsPointerOverUIElement()
                 )
             {
                 EnableHoldMenu(hit.collider.gameObject);
             }
-            else if (selectedHold != null && !pointerOverUIElement.IsPointerOverUIElement())
+            else if (selectedHold != null && !PointerOverUIElement.IsPointerOverUIElement())
             {
                 DisableHoldMenu();
             }
@@ -65,9 +61,9 @@ void Start()
         }
 
         // clicking on a hold will deselect any other hold
-        if(selectedHold != null)
+        if (selectedHold != null)
             DisableHoldMenu();
-        
+
         selectedHold = hold;
         //show the selectedOutline to highlight which hold is currently selected 
         selectedHold.GetComponent<Hold>().Selected();
@@ -86,5 +82,15 @@ void Start()
 
             selectedHold = null;
         }
+    }
+
+
+    public void OnDeleteHoldButtonClicked()
+    {
+        selectedHold.GetComponent<Hold>().Delete();
+        selectedHold = null;
+
+        holdMenu.gameObject.SetActive(false);
+
     }
 }

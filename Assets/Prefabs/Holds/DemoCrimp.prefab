@@ -202,7 +202,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 44fd09692e2534129b5e3899b464cca6, type: 2}
   nameofHold: crimp
   sizeofHold: 10mm
-  descriptionofHold: 30mm sloper with 45 degree angle
+  descriptionofHold: 10mm crimp with 2mm edge 100mm by 35mm
   isPlaced: 0
   isSelected: 0
 --- !u!54 &2337422019242939567

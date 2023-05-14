@@ -12,7 +12,8 @@ public class Hold : MonoBehaviour
     public string descriptionofHold = "a wooden crimp with 2mm edge";
 
     public bool isPlaced = false;
-    public bool isSelected = false; 
+    public bool isSelected = false;
+
     private HoldPlacementManager holdPlacementManager;
     private Outline outline;
 
@@ -31,7 +32,7 @@ public class Hold : MonoBehaviour
     {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        HoverHighlight(ray); 
+        HoverHighlight(ray);
     }
 
     private void HoverHighlight(Ray ray)
@@ -39,7 +40,9 @@ public class Hold : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 5)
             && hit.collider.gameObject == this.gameObject
-            && !isSelected)
+            && !isSelected
+            && !PointerOverUIElement.IsPointerOverUIElement()
+            )
         {
             outline.enabled = true;
             outline.OutlineColor = Color.grey;
@@ -49,7 +52,6 @@ public class Hold : MonoBehaviour
             outline.enabled = false;
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -87,5 +89,11 @@ public class Hold : MonoBehaviour
         outline.enabled = true;
         outline.OutlineColor = Color.white;
         isSelected = true;
+    }
+
+    public void Delete()
+    {
+        Deselected();
+        Destroy(this.gameObject);
     }
 }
