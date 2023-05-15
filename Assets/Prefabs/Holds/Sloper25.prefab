@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4231931301035186124
+--- !u!1 &962056425921077953
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4463270436988395412}
-  - component: {fileID: 3559807920163093935}
-  - component: {fileID: 1568833446004439407}
+  - component: {fileID: 726072334545676953}
+  - component: {fileID: 469997588521027746}
+  - component: {fileID: 2460834108297694306}
   m_Layer: 0
   m_Name: HighlightTransparent
   m_TagString: Untagged
@@ -18,36 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4463270436988395412
+--- !u!4 &726072334545676953
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4231931301035186124}
+  m_GameObject: {fileID: 962056425921077953}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0112}
-  m_LocalScale: {x: 0.09900001, y: 0.037499998, z: 0.022}
+  m_LocalPosition: {x: 0.00011, y: 0.00015, z: 0.0112}
+  m_LocalScale: {x: 0.09492703, y: 0.09383739, z: 0.022}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 53745815897135831}
+  m_Father: {fileID: 3989573168339693530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3559807920163093935
+--- !u!33 &469997588521027746
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4231931301035186124}
+  m_GameObject: {fileID: 962056425921077953}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1568833446004439407
+--- !u!23 &2460834108297694306
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4231931301035186124}
+  m_GameObject: {fileID: 962056425921077953}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &7639969736975148636
+--- !u!1 &6765991994406998865
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,51 +91,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 53745815897135831}
-  - component: {fileID: 5395724541313675172}
-  - component: {fileID: 3646155800216914439}
-  - component: {fileID: 6632862940952807798}
-  - component: {fileID: 7217370221057817743}
-  - component: {fileID: 5755786782907571631}
-  - component: {fileID: 3700213099163717596}
+  - component: {fileID: 3989573168339693530}
+  - component: {fileID: 9007842201517726377}
+  - component: {fileID: 394770035858456330}
+  - component: {fileID: 7777601741654015099}
+  - component: {fileID: 6037640287705450882}
+  - component: {fileID: 8647922514183284898}
+  - component: {fileID: 340850897317919441}
   m_Layer: 6
-  m_Name: Crimp15
+  m_Name: Sloper25
   m_TagString: Hold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &53745815897135831
+--- !u!4 &3989573168339693530
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12486786, y: 0.16976872, z: 0.33784902}
+  m_GameObject: {fileID: 6765991994406998865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08286786, y: 0.1167523, z: -0.044200003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4463270436988395412}
+  - {fileID: 726072334545676953}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5395724541313675172
+--- !u!33 &9007842201517726377
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
-  m_Mesh: {fileID: 8130605235924166793, guid: 9b8a0a2d49bae44069cc5d461c4af8a3, type: 3}
---- !u!23 &3646155800216914439
+  m_GameObject: {fileID: 6765991994406998865}
+  m_Mesh: {fileID: 2633259416434551598, guid: 7fd01cd5695594c6e962e58314f0ae51, type: 3}
+--- !u!23 &394770035858456330
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
+  m_GameObject: {fileID: 6765991994406998865}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -171,13 +171,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6632862940952807798
+--- !u!114 &7777601741654015099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
+  m_GameObject: {fileID: 6765991994406998865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -189,13 +189,13 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &7217370221057817743
+--- !u!114 &6037640287705450882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
+  m_GameObject: {fileID: 6765991994406998865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fd7fe27365124a4fa0c88e9174f2f67, type: 3}
@@ -214,26 +214,26 @@ MonoBehaviour:
   descriptionofHold: 10mm crimp with 2mm edge 100mm by 35mm
   isPlaced: 0
   isSelected: 0
---- !u!65 &5755786782907571631
+--- !u!65 &8647922514183284898
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
+  m_GameObject: {fileID: 6765991994406998865}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.030000001, z: 0.019751225}
   m_Center: {x: 0, y: 0, z: 0.009875612}
---- !u!54 &3700213099163717596
+--- !u!54 &340850897317919441
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639969736975148636}
+  m_GameObject: {fileID: 6765991994406998865}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
