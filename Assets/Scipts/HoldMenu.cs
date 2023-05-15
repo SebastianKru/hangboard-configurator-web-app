@@ -22,7 +22,6 @@ public class HoldMenu : MonoBehaviour
 
     public void ShowToggleOfActiveMaterial(int matIndex)
     {
-        Debug.Log(matIndex);
         switch(matIndex)
         {
             case 1:

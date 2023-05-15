@@ -50,6 +50,8 @@ MonoBehaviour:
   xMax: 0.5
   yMin: 0
   yMax: 0.11
+  yMinSloper: 0.0275
+  yMaxSloper: 0.0825
 --- !u!65 &3616835939123789287
 BoxCollider:
   m_ObjectHideFlags: 0

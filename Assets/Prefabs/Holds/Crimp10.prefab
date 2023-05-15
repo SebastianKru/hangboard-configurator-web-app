@@ -211,7 +211,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0d7703ed8fc24452d9bc0c1937661493, type: 2}
   nameofHold: crimp
   sizeofHold: 10mm
-  descriptionofHold: 10mm crimp with 2mm edge 100mm by 35mm
+  descriptionofHold: crimp with 3mm edge, soft slope. 90mm by 30mm
   isPlaced: 0
   isSelected: 0
 --- !u!65 &5741243543572175619

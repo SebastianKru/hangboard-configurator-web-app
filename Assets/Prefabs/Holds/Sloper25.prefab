@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962056425921077953}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.00011, y: 0.00015, z: 0.0112}
-  m_LocalScale: {x: 0.09492703, y: 0.09383739, z: 0.022}
+  m_LocalPosition: {x: 0.00011, y: 0.00015, z: 0.0256}
+  m_LocalScale: {x: 0.09492703, y: 0.09383739, z: 0.050804377}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3989573168339693530}
@@ -112,7 +112,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6765991994406998865}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.08286786, y: 0.1167523, z: -0.044200003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -209,9 +209,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3e8171d81974a42ac8423f350747f223, type: 2}
   - {fileID: 2100000, guid: 1e5f49a2f959d4321aef9b65429d180b, type: 2}
   - {fileID: 2100000, guid: 0d7703ed8fc24452d9bc0c1937661493, type: 2}
-  nameofHold: crimp
-  sizeofHold: 10mm
-  descriptionofHold: 10mm crimp with 2mm edge 100mm by 35mm
+  nameofHold: sloper
+  sizeofHold: 50mm
+  descriptionofHold: 25 degree slope 90mm by 90mm
   isPlaced: 0
   isSelected: 0
 --- !u!65 &8647922514183284898
@@ -225,7 +225,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09, y: 0.030000001, z: 0.019751225}
+  m_Size: {x: 0.09, y: 0.09, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0.009875612}
 --- !u!54 &340850897317919441
 Rigidbody:

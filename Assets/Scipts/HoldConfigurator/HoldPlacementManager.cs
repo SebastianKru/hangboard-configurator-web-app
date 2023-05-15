@@ -18,6 +18,7 @@ public class HoldPlacementManager : MonoBehaviour
 
     public float gridSizeX = 0.1f;
     public float gridSizeY = 0.055f;
+    public float gridSizeYSloper = 0.12f;
 
     private float thicknessBase = 0.025f;
 
@@ -39,14 +40,26 @@ public class HoldPlacementManager : MonoBehaviour
             PlaceHold();
         }
     }
+
     private void PlaceHold()
     {
-        holdCur.transform.position = new Vector3(
-            RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
-            RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
-            -thicknessBase/2
-            //-(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
-            );
+        
+        if (holdCur.GetComponent<Hold>().nameofHold == "sloper")
+        {
+            holdCur.transform.position = new Vector3(
+                RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
+                RoundToNearestGrid(pos.y, gridSizeYSloper, hangBoardBase.yMinSloper, hangBoardBase.yMaxSloper),
+                -thicknessBase / 2
+                );
+        }
+        else
+        {
+            holdCur.transform.position = new Vector3(
+                RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
+                RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
+                -thicknessBase / 2
+                );
+        }
 
         if (Input.GetMouseButtonDown(0) && isMouseOverHangboard)
         {
