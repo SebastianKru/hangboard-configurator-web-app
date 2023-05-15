@@ -27,7 +27,9 @@ public class HoldPlacementManager : MonoBehaviour
     public bool isPlaceAvailable = true;
 
     // is the mouse over the hangboard base, when the user wants to place the hold? 
-    private bool isMouseOverHangboard = false; 
+    private bool isMouseOverHangboard = false;
+
+    private Vector3 holdRotation = new Vector3(0, 180, 0); 
 
 
     private void Update()
@@ -42,7 +44,8 @@ public class HoldPlacementManager : MonoBehaviour
         holdCur.transform.position = new Vector3(
             RoundToNearestGrid(pos.x, gridSizeX, hangBoardBase.xMin, hangBoardBase.xMax),
             RoundToNearestGrid(pos.y, gridSizeY, hangBoardBase.yMin, hangBoardBase.yMax),
-            -(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
+            -thicknessBase/2
+            //-(thicknessBase + holdCur.GetComponent<BoxCollider>().bounds.size.z) / 2
             );
 
         if (Input.GetMouseButtonDown(0) && isMouseOverHangboard)
@@ -81,7 +84,7 @@ public class HoldPlacementManager : MonoBehaviour
         //control if a hold is currently being placed
         if(holdCur == null)
         {
-            holdCur = Instantiate(holds[index], pos, transform.rotation, holdsParent.transform);
+            holdCur = Instantiate(holds[index], pos, Quaternion.Euler(holdRotation), holdsParent.transform);
             activelyPlacingHold = true;
             hangBoardBase = GetComponentInChildren<HangBoardBase>();
         }

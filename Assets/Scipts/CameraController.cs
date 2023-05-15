@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     private float rotY;
     private float rotX;
 
-    private float zoomMin = 0.28f;
+    private float zoomMin = 0.24f;
     private float zoomMax = 0.37f;
     private float zoomSensitivity = 0.06f;
 
@@ -57,8 +57,8 @@ public class CameraController : MonoBehaviour
         rotY += mouseX;
         rotX += mouseY;
         // set bounds for min and max rotation on both axis 
-        rotX = Mathf.Clamp(rotX, -25, 25);
-        rotY = Mathf.Clamp(rotY, -25, 25);
+        rotX = Mathf.Clamp(rotX, -35, 35);
+        rotY = Mathf.Clamp(rotY, -20, 20);
 
         // set rotation of the camera according to mouse position 
         transform.localEulerAngles = new Vector3(rotX, rotY);

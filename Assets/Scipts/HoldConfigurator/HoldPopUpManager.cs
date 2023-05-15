@@ -119,11 +119,11 @@ public class HoldPopUpManager : MonoBehaviour
         if (menuPos.y < 185)
             menuPos.y += 250;
 
-        if (menuPos.x < 395)
-            menuPos.x = 395;
-
-        else if (menuPos.x > 1190)
-            menuPos.x = 1190;
+        if (menuPos.x < 800)
+            menuPos.x = 800;
+        
+        else if (menuPos.x > 2360)
+            menuPos.x = 2360;
 
         return menuPos;
     }
