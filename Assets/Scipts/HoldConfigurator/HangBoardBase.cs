@@ -11,13 +11,22 @@ public class HangBoardBase : MonoBehaviour
     public float yMax;
 
     public float yMinSloper;
-    public float yMaxSloper; 
+    public float yMaxSloper;
+
+    public float value;
+    public string description = "";
 
     private GameObject holdAnchor;
+    private ShoppingCart shoppingCart;
 
-    private void Awake()
+    private void Start()
     {
         ControlHoldPlacementsOnSpawn();
+
+        shoppingCart = GameObject.FindGameObjectWithTag("ShoppingCart").
+            GetComponent<ShoppingCart>()
+            ;
+        shoppingCart.UpdateBasePlate(this.GetComponent<HangBoardBase>());
     }
 
     private void ControlHoldPlacementsOnSpawn()

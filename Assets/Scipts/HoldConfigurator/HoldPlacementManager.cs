@@ -9,6 +9,7 @@ public class HoldPlacementManager : MonoBehaviour
     public GameObject[] holds;
     public GameObject holdsParent;
     public GameObject holdCur;
+
     public bool activelyPlacingHold = false; 
 
     private Vector3 pos;
@@ -65,11 +66,12 @@ public class HoldPlacementManager : MonoBehaviour
         {
             if (isPlaceAvailable)
             {
-                holdCur.transform.GetChild(0).gameObject.SetActive(false);
-                holdCur.GetComponent<Hold>().isPlaced = true;
                 // deselect hold on placement, as we do not weant the popUp Menu to open on placement 
                 holdsParent.GetComponent<HoldPopUpManager>().DisableHoldMenu();
+
+                holdCur.GetComponent<Hold>().PlaceThisHold();
                 holdCur = null;
+
                 activelyPlacingHold = false;
             }
         }

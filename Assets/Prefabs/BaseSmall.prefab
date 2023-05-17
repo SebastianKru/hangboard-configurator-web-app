@@ -52,6 +52,8 @@ MonoBehaviour:
   yMax: 0.11
   yMinSloper: 0.0275
   yMaxSloper: 0.0825
+  value: 15
+  description: travel  16.5cm x 50cm
 --- !u!65 &3616835939123789287
 BoxCollider:
   m_ObjectHideFlags: 0

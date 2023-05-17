@@ -212,6 +212,7 @@ MonoBehaviour:
   nameofHold: crimp
   sizeofHold: 10mm
   descriptionofHold: crimp with 3mm edge, soft slope. 90mm by 30mm
+  value: 10
   isPlaced: 0
   isSelected: 0
 --- !u!65 &5741243543572175619

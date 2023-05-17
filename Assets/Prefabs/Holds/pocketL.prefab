@@ -129,6 +129,7 @@ MonoBehaviour:
   nameofHold: pocket
   sizeofHold: 3 fingers
   descriptionofHold: slopey poket with 5mm edge. 90mm by 50mm
+  value: 15
   isPlaced: 0
   isSelected: 0
 --- !u!65 &2002277156985376228

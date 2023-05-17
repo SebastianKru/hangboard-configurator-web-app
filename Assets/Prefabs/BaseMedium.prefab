@@ -52,6 +52,8 @@ MonoBehaviour:
   yMax: 0.11
   yMinSloper: 0.0275
   yMaxSloper: 0.0825
+  value: 20
+  description: home  16.5cm x 70cm
 --- !u!65 &3132970654359932572
 BoxCollider:
   m_ObjectHideFlags: 0

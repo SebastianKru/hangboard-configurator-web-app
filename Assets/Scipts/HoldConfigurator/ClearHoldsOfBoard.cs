@@ -14,10 +14,9 @@ public class ClearHoldsOfBoard : MonoBehaviour
 
     public void OnClearHoldsButtonPressed()
     {
-        //TODO Add a message: are you sure you want to delete all holds, if at least one hold is present 
         foreach(Transform hold in holdsAnchor.transform)
         {
-            Destroy(hold.gameObject);
+            hold.GetComponent<Hold>().Delete();
         }
     }
 }

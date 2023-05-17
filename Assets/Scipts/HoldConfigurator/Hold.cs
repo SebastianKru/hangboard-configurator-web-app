@@ -11,6 +11,7 @@ public class Hold : MonoBehaviour
     public string nameofHold = "Crimp";
     public string sizeofHold = "10mm";
     public string descriptionofHold = "a wooden crimp with 2mm edge";
+    public float value; 
 
     public bool isPlaced = false;
     public bool isSelected = false;
@@ -18,10 +19,17 @@ public class Hold : MonoBehaviour
     private HoldPlacementManager holdPlacementManager;
     private Outline outline;
 
+    private ShoppingCart shoppingCart; 
+
     private void Awake()
     {
         holdPlacementManager = GameObject.FindGameObjectWithTag("HoldPlacementManager").
             GetComponent<HoldPlacementManager>();
+
+        shoppingCart = GameObject.FindGameObjectWithTag("ShoppingCart").
+            GetComponent<ShoppingCart>()
+            ;
+        
 
         materials[0] = materials[3]; 
         GetComponent<MeshRenderer>().material = materials[0];
@@ -32,10 +40,20 @@ public class Hold : MonoBehaviour
 
     private void Update()
     {
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         HoverHighlight(ray);
     }
+
+
+
+    public void PlaceThisHold()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        isPlaced = true;
+        shoppingCart.AddHoldToShoppingCart(this.GetComponent<Hold>());
+    }
+
+
 
     private void HoverHighlight(Ray ray)
     {
@@ -95,6 +113,7 @@ public class Hold : MonoBehaviour
 
     public void Delete()
     {
+        shoppingCart.RemoveHoldFromShoppingCart(this.GetComponent<Hold>());
         Deselected();
         Destroy(this.gameObject);
     }

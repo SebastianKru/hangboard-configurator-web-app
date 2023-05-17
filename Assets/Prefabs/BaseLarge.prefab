@@ -51,7 +51,9 @@ MonoBehaviour:
   yMin: 0
   yMax: 0.165
   yMinSloper: 0.0275
-  yMaxSloper: 0.1375
+  yMaxSloper: 0.165
+  value: 30
+  description: beast  22cm x 70cm
 --- !u!65 &2336597341939223668
 BoxCollider:
   m_ObjectHideFlags: 0

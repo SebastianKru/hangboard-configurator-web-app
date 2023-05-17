@@ -212,6 +212,7 @@ MonoBehaviour:
   nameofHold: sloper
   sizeofHold: 50mm
   descriptionofHold: 35 degree slope 90mm by 90mm
+  value: 20
   isPlaced: 0
   isSelected: 0
 --- !u!65 &6359786361617545102
