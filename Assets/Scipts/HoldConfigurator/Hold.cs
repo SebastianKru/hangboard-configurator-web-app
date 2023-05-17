@@ -8,10 +8,16 @@ public class Hold : MonoBehaviour
 
     public Material[] materials;
 
+    public enum TypeOfHold {crimp10mm, crimp15mm, crimp20mm, pocketL, pocketM, pocketS, sloper25, sloper35, sloper45 };
+
+    public TypeOfHold typeOfHold;
+
+    public GameObject shoppingCartText; 
+
     public string nameofHold = "Crimp";
     public string sizeofHold = "10mm";
     public string descriptionofHold = "a wooden crimp with 2mm edge";
-    public float value; 
+    public float priceOfHold = 0.0f; 
 
     public bool isPlaced = false;
     public bool isSelected = false;

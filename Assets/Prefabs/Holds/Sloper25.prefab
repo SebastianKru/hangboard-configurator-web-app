@@ -209,10 +209,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3e8171d81974a42ac8423f350747f223, type: 2}
   - {fileID: 2100000, guid: 1e5f49a2f959d4321aef9b65429d180b, type: 2}
   - {fileID: 2100000, guid: 0d7703ed8fc24452d9bc0c1937661493, type: 2}
+  typeOfHold: 6
   nameofHold: sloper
   sizeofHold: 50mm
   descriptionofHold: 25 degree slope 90mm by 90mm
-  value: 20
+  priceOfHold: 0
   isPlaced: 0
   isSelected: 0
 --- !u!65 &8647922514183284898

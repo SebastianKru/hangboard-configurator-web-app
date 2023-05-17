@@ -9,6 +9,9 @@ TagManager:
   - HoldPlacementManager
   - HoldMenu
   - ShoppingCart
+  - HoldName
+  - HoldPrice
+  - HoldAmount
   layers:
   - Default
   - TransparentFX
