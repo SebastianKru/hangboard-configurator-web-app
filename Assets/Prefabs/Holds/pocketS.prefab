@@ -210,10 +210,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1e5f49a2f959d4321aef9b65429d180b, type: 2}
   - {fileID: 2100000, guid: 0d7703ed8fc24452d9bc0c1937661493, type: 2}
   typeOfHold: 5
+  shoppingCartText: {fileID: 0}
   nameofHold: pocket
   sizeofHold: 1 finger
   descriptionofHold: slopey poket with 5mm edge. 90mm by 50mm
-  priceOfHold: 0
+  priceOfHold: 16
+  amountOfHoldsOnBoard: 0
   isPlaced: 0
   isSelected: 0
 --- !u!65 &7756736472708227956

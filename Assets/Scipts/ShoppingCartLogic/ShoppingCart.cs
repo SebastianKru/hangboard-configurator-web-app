@@ -53,40 +53,57 @@ public class ShoppingCart : MonoBehaviour
     {
         if(holds.Find(i => i.typeOfHold == hold.typeOfHold))
         {
-            Debug.Log("Hold already dispolayed");
+            int index = holds.FindIndex(i => i.typeOfHold == hold.typeOfHold);
+            holds[index].amountOfHoldsOnBoard += 1;
+
+            
+
+            holds[index].shoppingCartText.amount.text =
+                holds[index].amountOfHoldsOnBoard.ToString()
+                ;
+            
         }
         else
         {
-            holds.Add(hold);
+  
+            GameObject g = Instantiate(holdTextPrefab, holdsPopUpTextParent.transform);
+            hold.shoppingCartText = g.GetComponent<HoldShoppingCartText>();
 
-            hold.shoppingCartText =
-                Instantiate(holdTextPrefab, holdsPopUpTextParent.transform
-                );
+            hold.amountOfHoldsOnBoard = 1;
 
-            hold.shoppingCartText.transform.GetChild(0).
-                GetComponent<TMP_Text>().text =
+            hold.shoppingCartText.amount.text = hold.amountOfHoldsOnBoard.ToString();
+
+            hold.shoppingCartText.description.text = 
                 hold.nameofHold + " " + hold.sizeofHold
                 ;
 
-            hold.shoppingCartText.transform.GetChild(2).
-                GetComponent<TMP_Text>().text =
+            hold.shoppingCartText.price.text =
                 hold.priceOfHold.ToString() + " $";
                 ;
+
+            holds.Add(hold);
         }
-
-
-
-
-
-
-
-
+        
         holdsTotalPrice += hold.priceOfHold;
         UpdateShoppingCartButton();
     }
 
     public void RemoveHoldFromShoppingCart(Hold hold)
     {
+        int index = holds.FindIndex(i => i.typeOfHold == hold.typeOfHold);
+
+        if (holds[index].amountOfHoldsOnBoard == 1)
+        {
+            //hold.amountOfHoldsOnBoard = 0;
+            holds.Remove(holds[index]);
+            Destroy(hold.shoppingCartText.gameObject);
+        }
+        else if (holds[index].amountOfHoldsOnBoard > 1)
+        {
+            holds[index].amountOfHoldsOnBoard -= 1;
+            holds[index].shoppingCartText.amount.text = holds[index].amountOfHoldsOnBoard.ToString();
+        }
+
         holdsTotalPrice -= hold.priceOfHold;
         UpdateShoppingCartButton();
     }

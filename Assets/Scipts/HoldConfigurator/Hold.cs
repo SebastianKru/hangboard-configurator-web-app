@@ -12,12 +12,13 @@ public class Hold : MonoBehaviour
 
     public TypeOfHold typeOfHold;
 
-    public GameObject shoppingCartText; 
+    public HoldShoppingCartText shoppingCartText; 
 
     public string nameofHold = "Crimp";
     public string sizeofHold = "10mm";
     public string descriptionofHold = "a wooden crimp with 2mm edge";
-    public float priceOfHold = 0.0f; 
+    public float priceOfHold = 0.0f;
+    public int amountOfHoldsOnBoard = 0;
 
     public bool isPlaced = false;
     public bool isSelected = false;
