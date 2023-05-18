@@ -10,7 +10,6 @@ public class RadioButtonHangBoardBase : MonoBehaviour
     public Transform anchor; 
     public void Start()
     {
-
         //Fetch the Toggle GameObject
         toggle = GetComponent<Toggle>();
         //Add listener for when the state of the Toggle changes, to take action
@@ -37,7 +36,6 @@ public class RadioButtonHangBoardBase : MonoBehaviour
        }
        else
        {
-
             if(hangboardBase.activeSelf)
             {
                 Destroy(anchor.GetChild(0).gameObject);

@@ -95,8 +95,8 @@ public class ShoppingCart : MonoBehaviour
         if (holds[index].amountOfHoldsOnBoard == 1)
         {
             //hold.amountOfHoldsOnBoard = 0;
+            Destroy(holds[index].shoppingCartText.gameObject);
             holds.Remove(holds[index]);
-            Destroy(hold.shoppingCartText.gameObject);
         }
         else if (holds[index].amountOfHoldsOnBoard > 1)
         {

@@ -40,7 +40,7 @@ public class HangBoardBase : MonoBehaviour
                 || hold.position.y < yMin
                 || hold.position.y > yMax)
             {
-                Destroy(hold.gameObject);
+                hold.GetComponent<Hold>().Delete();
             }
         }
     }
