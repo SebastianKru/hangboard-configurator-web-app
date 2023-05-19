@@ -36,13 +36,13 @@ public class HoldPopUpManager : MonoBehaviour
                  //TODO find out why nullrefference
                  // avoid selecting a hold while dragging another hold over it 
                  && !holdPlacementManager.activelyPlacingHold
-                 && !PointerOverUIElement.IsPointerOverUIElement()
+                 && !PointerOverUIElement.IsPointerOverUIElement(7)
                 )
             {
                 EnableHoldMenu(hit.collider.gameObject);
             }
             else if (selectedHold != null
-                && !PointerOverUIElement.IsPointerOverUIElement()
+                && !PointerOverUIElement.IsPointerOverUIElement(7)
                 )
             {
                 DisableHoldMenu();

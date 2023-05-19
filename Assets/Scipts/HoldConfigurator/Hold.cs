@@ -68,7 +68,7 @@ public class Hold : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 5)
             && hit.collider.gameObject == this.gameObject
             && !isSelected
-            && !PointerOverUIElement.IsPointerOverUIElement()
+            && !PointerOverUIElement.IsPointerOverUIElement(7)
             )
         {
             outline.enabled = true;

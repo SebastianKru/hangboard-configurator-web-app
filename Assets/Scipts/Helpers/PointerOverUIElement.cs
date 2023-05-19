@@ -6,22 +6,20 @@ using UnityEngine.EventSystems;
 public class PointerOverUIElement : MonoBehaviour
 {
 
-    public static int uiLayer = 7;
-
     //Returns 'true' if we touched or hovering on Unity UI element.
-    public static bool IsPointerOverUIElement()
+    public static bool IsPointerOverUIElement(int layeruI)
     {
-        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+        return IsPointerOverUIElement(GetEventSystemRaycastResults(), layeruI);
     }
 
 
     //Returns 'true' if we touched or hovering on Unity UI element.
-    private static bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    private static bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults, int layerUI)
     {
         for (int index = 0; index < eventSystemRaysastResults.Count; index++)
         {
             RaycastResult curRaysastResult = eventSystemRaysastResults[index];
-            if (curRaysastResult.gameObject.layer == uiLayer)
+            if (curRaysastResult.gameObject.layer == layerUI)
                 return true;
         }
         return false;
