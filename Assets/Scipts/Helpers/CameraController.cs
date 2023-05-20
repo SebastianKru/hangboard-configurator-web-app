@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField]
+    private Slider sliderZoom;
+
     [SerializeField]
     private Transform hangboardParent;
 
@@ -29,6 +33,8 @@ public class CameraController : MonoBehaviour
 
     float animationTime = 0.5f;
 
+    private bool rotationOfHangboardAllowed = false;
+
     private void Start()
     {
         defaultCameraZoom = Camera.main.orthographicSize;
@@ -41,8 +47,22 @@ public class CameraController : MonoBehaviour
         //Check if the user is zooming each frame
         ZoomOnScroll();
 
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    if(PointerOverUIElement.IsPointerOverUIElement(9))
+        //    {
+        //        rotationOfHangboardAllowed = false;
+        //    }
+        //    else
+        //    {
+        //        rotationOfHangboardAllowed = true; 
+        //    }
+        //}
+
         // if the mouse Button is pressed, the user can rotate the camera around the Hangboard 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)
+            //&& rotationOfHangboardAllowed
+            )
         {
             RotationOnDrag();
         }
@@ -69,6 +89,11 @@ public class CameraController : MonoBehaviour
             - transform.right * cameraOffset.x;
     }
 
+    public void ZoomWithSlider()
+    {
+        Camera.main.orthographicSize = sliderZoom.value;
+    }
+
     private void ZoomOnScroll()
     {
         // zoom is done by changing the ortographic camera option called "size"
@@ -82,6 +107,8 @@ public class CameraController : MonoBehaviour
         // apply the zoom value to the camera option "size"
         Camera.main.orthographicSize = zoom;
     }
+
+
 
     //gets called if the Button "" is pressed
     public void ResetView()
