@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class InfoButtonBehaviour : MonoBehaviour
 {
+    // holds all the Info texts
     public GameObject info;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    // whenever a user clicks anywhere on the WebGL window we want to close the infos
+    // unless the User clicks on an Info itself
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !PointerOverUIElement.IsPointerOverUIElement(8))
+
+        if(Input.GetMouseButtonDown(0) &&
+            //UI Elements of the type Info are labeled in UI layer 8
+            !PointerOverUIElement.IsPointerOverUIElement(8)
+            )
         {
             info.SetActive(false);
         }
     }
 
+    // On Button Click toggle between active and inactive 
     public void OnInfoButtonClicked()
     {
         if(info.activeSelf)

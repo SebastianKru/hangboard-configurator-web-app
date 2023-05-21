@@ -6,34 +6,41 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    private Slider sliderZoom;
+    //Not used at the moment, explored as a Bugfix for the trapped scrollwheel
+    //[SerializeField]
+    //private Slider sliderZoom;
 
+    // the parent GameObject of the BasePlate
     [SerializeField]
     private Transform hangboardParent;
 
-    // offset between Camera and Hangboard, as the hangboard is shifted to the right
-    // in order to have anough space for the UI on the left 
+    // offset between Camera and Hangboard
     [SerializeField]
     private Vector3 cameraOffset = new Vector3(0.1f,0.0675f,0.7f);
+
+    //Camera Position at start
     [SerializeField]
     private Vector3 defaultCameraPosition = new Vector3(0.2f, 0.0675f, 0.7f);
+
+    // the speed of rotation if a user is using the mouse to rotate the hangboard 
     [SerializeField]
     private float rotSpeed = 2.0f;
 
+    // variables to store the input of the mouse axis
     private float rotY;
     private float rotX;
 
+    // bounds and sensitivity for zooming
     private float zoomMin = 0.24f;
     private float zoomMax = 0.37f;
     private float zoomSensitivity = 0.06f;
-
+    //the default zoom and rotation of the camera 
     private float defaultCameraZoom;
     private Quaternion defaultCameraRotation;
 
+    // the camera animates the "reset view" with a duration of 0.5 seconds
     float animationTime = 0.5f;
 
-    private bool rotationOfHangboardAllowed = false;
 
     private void Start()
     {
@@ -44,25 +51,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        //Check if the user is zooming each frame
+        //Check each frame if the user is zooming
         ZoomOnScroll();
 
-        //if(Input.GetMouseButtonDown(0))
-        //{
-        //    if(PointerOverUIElement.IsPointerOverUIElement(9))
-        //    {
-        //        rotationOfHangboardAllowed = false;
-        //    }
-        //    else
-        //    {
-        //        rotationOfHangboardAllowed = true; 
-        //    }
-        //}
-
         // if the mouse Button is pressed, the user can rotate the camera around the Hangboard 
-        if (Input.GetMouseButton(0)
-            //&& rotationOfHangboardAllowed
-            )
+        if (Input.GetMouseButton(0))
         {
             RotationOnDrag();
         }
@@ -89,10 +82,11 @@ public class CameraController : MonoBehaviour
             - transform.right * cameraOffset.x;
     }
 
-    public void ZoomWithSlider()
-    {
-        Camera.main.orthographicSize = sliderZoom.value;
-    }
+    //this method was used to explore alternatives to the mouse wheel zoom, it is currently not used 
+    //public void ZoomWithSlider()
+    //{
+    //    Camera.main.orthographicSize = sliderZoom.value;
+    //}
 
     private void ZoomOnScroll()
     {
@@ -142,13 +136,13 @@ public class CameraController : MonoBehaviour
                 Vector3.Slerp(transform.position,
                 defaultCameraPosition,
                 timePassed / animationTime);
-
+            // use Mathf.Smoothstep to reset the zoom to default 
             Camera.main.orthographicSize =
                 Mathf.SmoothStep(
                     Camera.main.orthographicSize,
                     defaultCameraZoom,
                     timePassed / animationTime);
-
+            // increase the time each frame by the time that passed since the last frame 
             timePassed += Time.deltaTime;
             yield return null;
         }

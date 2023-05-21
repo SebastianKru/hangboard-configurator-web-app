@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class RadioButtonHangBoardBase : MonoBehaviour
 {
-    Toggle toggle;
+    // the UI Toggle component of this GameObject
+    private Toggle toggle;
+    // one of the 3 Base sizes 
     public GameObject hangboardBase;
-    public Transform anchor; 
+    // a Parent Object to which all Bases will be spawned
+    public Transform anchor;
+
     public void Start()
     {
         //Fetch the Toggle GameObject
@@ -17,13 +21,16 @@ public class RadioButtonHangBoardBase : MonoBehaviour
             ToggleValueChanged(toggle);
         });
 
+        // only one toggle of the ToggleGroup can be active at the same time
+        // find the active Toggle and spawn the hangboardBase 
         if (toggle.isOn)
         {
             GameObject.Instantiate(hangboardBase, anchor);
         }
     }
 
-    //Output the new state of the Toggle into Text
+    // If a user presses a Toggle, the corresponding hangboardBase will be instantiated
+    // any other existing hangboardBase will be deleted 
     void ToggleValueChanged(Toggle change)
     {
        if(toggle.isOn)

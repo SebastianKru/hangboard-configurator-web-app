@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
+//Source https://forum.unity.com/threads/how-to-detect-if-mouse-is-over-ui.1025533/
+// a helper script, which detects if the mouse if over a UI element
+// only slightly adapted by me, to pass the layer of UI element as int
+
 public class PointerOverUIElement : MonoBehaviour
 {
 
