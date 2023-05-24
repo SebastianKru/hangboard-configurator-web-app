@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-// handles the logic of the HoldMeu
-public class HoldPopUpManager : MonoBehaviour
+// handles the logic of the HoldMenu
+public class HoldMenuManager : MonoBehaviour
 {
     // currently selected Hold on the Hangboard
     public GameObject selectedHold;

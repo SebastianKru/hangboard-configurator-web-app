@@ -76,7 +76,7 @@ public class HoldPlacementManager : MonoBehaviour
             if (isPlaceAvailable)
             {
                 // deselect hold on placement, as we do not want the popUp Menu to open on placement 
-                holdsParent.GetComponent<HoldPopUpManager>().DisableHoldMenu();
+                holdsParent.GetComponent<HoldMenuManager>().DisableHoldMenu();
                 // call the pacethisHold method of the cur hold
                 holdCur.GetComponent<Hold>().PlaceThisHold();
                 // set cur hold null after it was placed

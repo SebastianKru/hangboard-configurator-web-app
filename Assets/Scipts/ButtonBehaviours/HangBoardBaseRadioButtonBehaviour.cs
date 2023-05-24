@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RadioButtonHangBoardBase : MonoBehaviour
+public class HangBoardBaseRadioButtonBehaviour : MonoBehaviour
 {
     // the UI Toggle component of this GameObject
     private Toggle toggle;
