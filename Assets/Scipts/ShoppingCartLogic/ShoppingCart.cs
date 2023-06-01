@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro; 
 
 // manages all interactions with the ShoppingCart
-public class ShoppingCartManager : MonoBehaviour
+public class ShoppingCart : MonoBehaviour
 {
     // the UI of the ShoppingCartMenu
     public GameObject shoppingCardPopUp;
