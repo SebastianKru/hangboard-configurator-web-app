@@ -7423,7 +7423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f268bf582d794af3887700e2c53a584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderZoom: {fileID: 1672421717}
   hangboardParent: {fileID: 1375717149}
   cameraOffset: {x: 0.1, y: 0.0675, z: -0.7}
   defaultCameraPosition: {x: 0.2, y: 0.0675, z: -0.7}
@@ -7620,7 +7619,7 @@ MonoBehaviour:
   shoppingCartButtonText: {fileID: 1804249602}
   basePlateNameText: {fileID: 1108183433}
   basePlatePriceText: {fileID: 316641556}
-  holdsPopUpTextParent: {fileID: 1354537923}
+  holdsShoppingcartTextParent: {fileID: 0}
   holdTextPrefab: {fileID: 3042753698584720775, guid: 7054710f4b083499d97a08a71ce1ba0c, type: 3}
   totalPrice: 0
 --- !u!114 &1021988094
